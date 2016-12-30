@@ -21,6 +21,7 @@ RUN apt-get build-dep -y python-imaging --fix-missing
 RUN apt-get install -y imagemagick
 RUN apt-get install -y wget
 RUN apt-get install -y python python-pip
+RUN apt-get install -y tesseract-ocr
 
 # build leptonica
 RUN wget http://www.leptonica.org/source/leptonica-1.70.tar.gz
@@ -38,20 +39,20 @@ ADD requirements.txt /
 RUN pip install -r requirements.txt
 
 # build tesseract
-RUN wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz
-RUN tar -zxvf tesseract-ocr-3.02.02.tar.gz
-WORKDIR tesseract-ocr/
-RUN ./autogen.sh
-RUN ./configure
-RUN make
-RUN make install
-RUN ldconfig
-RUN cd ..
+#RUN wget  https://github.com/tesseract-ocr/tesseract/archive/3.02.02.tar.gz
+#RUN tar -zxvf tesseract-3.02.02.tar.gz
+#WORKDIR tesseract-ocr/
+#RUN ./autogen.sh
+#RUN ./configure
+#RUN make
+#RUN make install
+#RUN ldconfig
+#RUN cd ..
 
 # download the relevant Tesseract English Language Packages
-RUN wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
-RUN tar -xf tesseract-ocr-3.02.eng.tar.gz
-RUN sudo cp -r tesseract-ocr/tessdata /usr/local/share/
+#RUN wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.eng.tar.gz
+#RUN tar -xf tesseract-ocr-3.02.eng.tar.gz
+#RUN sudo cp -r tesseract-ocr/tessdata /usr/local/share/
 
 # update working directories
 ADD ./flask_server /flask_server

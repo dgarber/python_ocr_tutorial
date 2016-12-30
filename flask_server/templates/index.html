@@ -2,10 +2,11 @@
 
 {% block content %}
 
-<form role="form" method="POST" id="post-form" onsubmit="return false">
+<form role="form" method="POST" id="post-form" enctype=multipart/form-data onsubmit="return false">
   <div class="form-group">
-    <input type="text" class="form-control input-lg" name="image_url" placeholder="enter an image url..." required></center>
+      <input type=file name=file>
   </div>
+    
   <button type="submit" class="btn btn-lg btn-block btn-success boom" id="search">Submit!</button>
 </form>
 

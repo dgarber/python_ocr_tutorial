@@ -1,0 +1,16 @@
+version: '2'
+services:
+  web:
+    # image: example_corp/example:baseimage
+    build: ../.
+    volumes:
+      - ../flask_server:/flask_server
+    ports:
+      - "5000:5000"
+    environment:
+      MODE: 'dev'
+      DB_NAME: 'admin'
+    # entrypoint:
+    #   - /bin/bash
+    #   - -c
+    #   - "cd /app && run_my_app.sh"
